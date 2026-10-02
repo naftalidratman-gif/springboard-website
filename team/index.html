@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png">
+  <title>Team | Israel Innovation Springboard</title>
+  <link rel="canonical" href="https://israelinnovationspringboard.com/team">
+  <meta name="description" content="Meet the team building practical connections between U.S. enterprise challenges and Israel's innovation ecosystem.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0B2038;
+      --navy-deep: #07182B;
+      --navy-dark: #081628;
+      --gold: #C9A24A;
+      --gold-dark: #B08D38;
+      --gold-light: #E5CB89;
+      --cream: #FCFBF7;
+      --cream-deep: #F6F2EA;
+      --ink-muted: #4E5C68;
+      --white: #FFFFFF;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { min-width: 320px; background: var(--cream-deep); scroll-behavior: smooth; scroll-padding-top: 96px; }
+
+    [id] { scroll-margin-top: 96px; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--navy);
+      background: var(--cream-deep);
+      font-family: "Manrope", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 20;
+      background: rgba(7, 24, 43, 0.94);
+      border-bottom: 1px solid rgba(201, 162, 74, 0.16);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      width: min(100%, 1240px);
+      height: 76px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 4vw, 48px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .logo-link { display: flex; align-items: center; flex: none; text-decoration: none; }
+
+    .logo-link img {
+      display: block;
+      width: auto;
+      height: 52px;
+      max-width: min(42vw, 154px);
+      object-fit: contain;
+    }
+
+    .desktop-nav { display: flex; align-items: center; gap: clamp(18px, 2.1vw, 32px); }
+
+    .nav-link {
+      position: relative;
+      color: #DCE3EA;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color 180ms ease;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible { color: var(--white); }
+
+    .nav-link[aria-current="page"]::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -10px;
+      left: 0;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 11px 22px;
+      border-radius: 2px;
+      color: var(--navy);
+      background: var(--gold);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      text-decoration: none;
+      transition: background 180ms ease, transform 180ms ease;
+    }
+
+    .nav-cta:hover,
+    .nav-cta:focus-visible { background: #D9B45E; transform: translateY(-2px); }
+
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      padding: 8px;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      margin: 5px 0;
+      background: var(--white);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-nav {
+      display: none;
+      padding: 14px clamp(20px, 4vw, 48px) 26px;
+      background: var(--navy-dark);
+      border-top: 1px solid rgba(201, 162, 74, 0.25);
+    }
+
+    .mobile-nav.is-open { display: flex; flex-direction: column; }
+    .mobile-nav .nav-link { padding: 14px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.07); font-size: 16px; }
+    .mobile-nav .nav-link[aria-current="page"] { color: var(--gold-light); }
+    .mobile-nav .nav-link[aria-current="page"]::after { display: none; }
+    .mobile-nav .nav-cta { justify-content: center; margin-top: 14px; padding: 14px; }
+
+    main { padding-top: 76px; }
+
+    .services-section {
+      position: relative;
+      min-height: calc(100vh - 76px);
+      padding: clamp(72px, 9vw, 124px) clamp(20px, 4vw, 48px) clamp(88px, 11vw, 148px);
+      overflow: hidden;
+      background: var(--cream-deep);
+    }
+
+    .services-section::before {
+      content: "";
+      position: absolute;
+      top: -270px;
+      right: -180px;
+      width: 560px;
+      height: 560px;
+      border: 1px solid rgba(201, 162, 74, 0.15);
+      transform: rotate(45deg);
+      box-shadow: 0 0 0 88px rgba(201, 162, 74, 0.025), 0 0 0 176px rgba(201, 162, 74, 0.018);
+      pointer-events: none;
+    }
+
+    .services-inner { position: relative; z-index: 1; width: min(100%, 1240px); margin: 0 auto; }
+
+    .services-intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.65fr);
+      gap: clamp(34px, 7vw, 110px);
+      align-items: end;
+      margin-bottom: clamp(48px, 6vw, 76px);
+    }
+
+    .eyebrow { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+    .eyebrow::before { content: ""; width: 32px; height: 1px; background: var(--gold); }
+    .eyebrow span { color: var(--gold-dark); font-size: 12px; font-weight: 700; letter-spacing: 3.5px; }
+
+    h1 {
+      max-width: 760px;
+      margin: 0;
+      color: var(--navy);
+      font-family: "Newsreader", serif;
+      font-size: clamp(42px, 6vw, 72px);
+      font-weight: 500;
+      line-height: 0.98;
+      letter-spacing: -1px;
+      text-wrap: balance;
+    }
+
+    .intro-copy {
+      margin: 0 0 4px;
+      color: var(--ink-muted);
+      font-size: clamp(16px, 1.6vw, 19px);
+      line-height: 1.7;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(18px, 2.2vw, 30px);
+      counter-reset: service;
+    }
+
+    .service-card {
+      position: relative;
+      min-height: 286px;
+      padding: clamp(30px, 3.5vw, 44px);
+      overflow: hidden;
+      background: var(--cream);
+      border: 1px solid #E0D8C7;
+      border-top: 3px solid var(--gold);
+      transition: transform 280ms ease, box-shadow 280ms ease, border-color 280ms ease;
+    }
+
+    .service-card::after {
+      content: "";
+      position: absolute;
+      right: -78px;
+      bottom: -92px;
+      width: 180px;
+      height: 180px;
+      border: 1px solid rgba(201, 162, 74, 0.13);
+      transform: rotate(45deg);
+      transition: transform 400ms cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .service-card:hover { transform: translateY(-6px); border-color: #D4C7AC; box-shadow: 0 22px 48px rgba(11, 32, 56, 0.12); }
+    .service-card:hover::after { transform: rotate(45deg) scale(1.12); }
+
+    .service-number {
+      display: block;
+      margin-bottom: 24px;
+      color: var(--gold);
+      font-family: "Newsreader", serif;
+      font-size: 46px;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .service-card h2 {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 14px;
+      color: var(--navy);
+      font-family: "Newsreader", serif;
+      font-size: clamp(24px, 2.4vw, 30px);
+      font-weight: 600;
+      line-height: 1.12;
+      letter-spacing: -0.3px;
+    }
+
+    .service-card p {
+      position: relative;
+      z-index: 1;
+      max-width: 500px;
+      margin: 0;
+      color: #54616D;
+      font-size: 16px;
+      line-height: 1.68;
+    }
+
+    .site-footer { padding: 56px clamp(20px, 4vw, 48px) 30px; color: #C4CEDA; background: var(--navy-deep); }
+    .footer-inner { width: min(100%, 1240px); margin: 0 auto; }
+    .footer-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 32px; padding-bottom: 40px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+    .footer-brand { max-width: 380px; }
+    .footer-mark { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .footer-mark img { display: block; width: auto; height: 40px; max-width: 118px; object-fit: contain; flex: none; }
+    .footer-brand p { margin: 0; color: #8A97A5; font-size: 15px; line-height: 1.6; }
+    .footer-nav { display: flex; flex-wrap: wrap; gap: 14px 40px; }
+    .footer-nav a { color: #C4CEDA; font-size: 14px; font-weight: 600; text-decoration: none; transition: color 180ms ease; }
+    .footer-nav a:hover, .footer-nav a:focus-visible, .footer-nav a[aria-current="page"] { color: var(--white); }
+    .copyright { padding-top: 28px; color: #6A7785; font-size: 13px; }
+
+    .advisory-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(20px, 2.4vw, 30px);
+      align-items: stretch;
+    }
+
+    @media (max-width: 880px) {
+      .desktop-nav { display: none; }
+      .menu-toggle { display: block; }
+      .services-intro { grid-template-columns: 1fr; gap: 26px; }
+      .intro-copy { max-width: 680px; }
+      .advisory-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 680px) {
+      .services-section { padding-top: 62px; }
+      .services-section::before { right: -320px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card { min-height: 0; }
+      .advisory-grid { grid-template-columns: 1fr; }
+      .footer-top { flex-direction: column; }
+      .footer-nav { width: 100%; gap: 14px 28px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo-link" href="/" aria-label="Return to Israel Innovation Springboard home">
+        <img src="../assets/site-logo-final.png" alt="Israel Innovation Springboard">
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a class="nav-link" href="/about">About</a>
+        <a class="nav-link" href="/why-were-different">Why We're Different</a>
+        <a class="nav-link" href="/services">Services</a>
+        <a class="nav-link" href="/case-study">Case Study</a>
+        <a class="nav-link" href="/for-israeli-startups">For Israeli Startups</a>
+        <a class="nav-link" href="/team" aria-current="page">Team</a>
+        <a class="nav-cta" href="/get-started">Get Started</a>
+      </nav>
+
+      <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <nav class="mobile-nav" id="mobile-navigation" aria-label="Mobile navigation">
+      <a class="nav-link" href="/about">About</a>
+      <a class="nav-link" href="/why-were-different">Why We're Different</a>
+      <a class="nav-link" href="/services">Services</a>
+      <a class="nav-link" href="/case-study">Case Study</a>
+      <a class="nav-link" href="/for-israeli-startups">For Israeli Startups</a>
+      <a class="nav-link" href="/team" aria-current="page">Team</a>
+      <a class="nav-cta" href="/get-started">Get Started</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="team" aria-labelledby="team-title" style="background: #F6F2EA; padding: clamp(80px, 11vw, 140px) clamp(20px, 4vw, 48px);">
+      <div style="max-width: 1240px; margin: 0 auto;">
+        <div style="max-width: 640px; margin-bottom: clamp(48px, 6vw, 72px);" data-reveal="">
+          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 22px;">
+            <span style="width: 32px; height: 1px; background: #C9A24A;"></span>
+            <span style="font-size: 12px; letter-spacing: 3.5px; font-weight: 700; color: #B08D38;">LEADERSHIP</span>
+          </div>
+          <h1 id="team-title" style="font-family: 'Newsreader', serif; font-weight: 500; color: #0B2038; font-size: clamp(32px, 4.6vw, 52px); line-height: 1.08; letter-spacing: -.4px; margin: 0;">The people behind the bridge</h1>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: clamp(20px, 2.4vw, 30px); align-items: stretch;">
+          <article data-reveal="" style="min-width: 0; background: #FCFBF7; border: 1px solid #E0D8C7; border-top: 3px solid #C9A24A; display: flex; flex-direction: column;">
+            <div role="img" aria-label="Naftali Dratman" style="aspect-ratio: 4/5; width: 100%; background-image: url('https://i.postimg.cc/HkHNntPj/1757231827784.jpg'); background-size: cover; background-position: center top; background-color: #0B2038;"></div>
+            <div style="padding: clamp(22px, 2.4vw, 30px); display: grid; grid-template-rows: 36px 36px 56px auto; align-content: start; flex: 1;">
+              <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(20px, 1.9vw, 25px); line-height: 1.08; white-space: nowrap; color: #0B2038; margin: 0; letter-spacing: -.3px;">Naftali Dratman</h2>
+              <p style="font-size: 12px; line-height: 1.45; letter-spacing: 1.5px; font-weight: 700; color: #B08D38; margin: 0;">CEO</p>
+              <div style="display: flex; align-items: center; align-content: flex-start; gap: 6px 10px; margin: 0; padding-bottom: 10px; flex-wrap: wrap;">
+                <a href="https://www.linkedin.com/in/naftalidratman/" target="_blank" rel="noopener" style="font-size: 12.5px; font-weight: 600; color: #0B2038; text-decoration: none; border-bottom: 1px solid #C9A24A; padding-bottom: 2px;">LinkedIn →</a>
+                <a href="https://wa.me/972584101269" target="_blank" rel="noopener" style="font-size: 12.5px; font-weight: 700; color: #1FA855; text-decoration: none; border-bottom: 1px solid rgba(31,168,85,.45); padding-bottom: 2px;">WhatsApp</a>
+                <a href="https://www.jpost.com/consumerism/article-856203" target="_blank" rel="noopener" style="font-size: 12px; font-weight: 600; color: #0B2038; text-decoration: none; border-bottom: 1px solid #D9CFBB; padding-bottom: 2px;">Jerusalem Post</a>
+                <a href="https://www.youtube.com/@ndratman" target="_blank" rel="noopener" style="font-size: 12px; font-weight: 600; color: #0B2038; text-decoration: none; border-bottom: 1px solid #D9CFBB; padding-bottom: 2px;">YouTube</a>
+                <a href="https://open.spotify.com/show/2K6xwp2Kk1elqtuH4pEzEA" target="_blank" rel="noopener" style="font-size: 12px; font-weight: 600; color: #0B2038; text-decoration: none; border-bottom: 1px solid #D9CFBB; padding-bottom: 2px;">Spotify</a>
+              </div>
+              <div style="font-size: 14.5px; line-height: 1.68; color: #4E5C68; padding-top: 3px;">
+                <p style="margin: 0 0 14px;">Naftali has spent years at the leading edge of innovation inside companies such as General Motors, LG Electronics, Airbus and Oppo/OnePlus. He has led large corporate innovation programs, including night vision for cars and Advanced Air Mobility, with the Israeli startup ecosystem.</p>
+                <p style="margin: 0;">He has also initiated joint projects between corporates and academia in Israel and around the world.</p>
+              </div>
+            </div>
+          </article>
+
+          <article data-reveal="" data-reveal-delay="100" style="min-width: 0; background: #FCFBF7; border: 1px solid #E0D8C7; border-top: 3px solid #C9A24A; display: flex; flex-direction: column;">
+            <div role="img" aria-label="Brian Wallace" style="aspect-ratio: 4/5; width: 100%; background-image: url('https://i.postimg.cc/3r6Z61TS/brian-wallace-jpg.jpg'); background-size: cover; background-position: center top; background-color: #0B2038;"></div>
+            <div style="padding: clamp(22px, 2.4vw, 30px); display: grid; grid-template-rows: 36px 36px 56px auto; align-content: start; flex: 1;">
+              <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(20px, 1.9vw, 25px); line-height: 1.08; white-space: nowrap; color: #0B2038; margin: 0; letter-spacing: -.3px;">Brian Wallace</h2>
+              <p style="font-size: 12px; line-height: 1.45; letter-spacing: 1.5px; font-weight: 700; color: #B08D38; margin: 0;">CMO &amp; INNOVATION ARCHITECT</p>
+              <div style="display: flex; align-items: center; align-content: flex-start; gap: 6px 10px; margin: 0; padding-bottom: 10px; flex-wrap: wrap;">
+                <a href="https://www.linkedin.com/in/nowsourcing" target="_blank" rel="noopener" style="font-size: 12.5px; font-weight: 600; color: #0B2038; text-decoration: none; border-bottom: 1px solid #C9A24A; padding-bottom: 2px;">LinkedIn →</a>
+              </div>
+              <div style="font-size: 14.5px; line-height: 1.68; color: #4E5C68;">
+                <p style="margin: 0 0 14px;">Brian is the Founder and President of NowSourcing, an industry-leading content marketing agency that makes complexity simple, visual, and influential. He has been named a Google Small Business Advisor since 2016 and joined the SXSW Advisory Board in 2019.</p>
+                <p style="margin: 0;">He became an SMB Advisor for Lexmark in 2023 and is the Founder of The Innovate Summit, which successfully launched in May 2024.</p>
+              </div>
+            </div>
+          </article>
+
+          <article data-reveal="" data-reveal-delay="200" style="min-width: 0; background: #FCFBF7; border: 1px solid #E0D8C7; border-top: 3px solid #C9A24A; display: flex; flex-direction: column;">
+            <div role="img" aria-label="Matthew Silverman" style="aspect-ratio: 4/5; width: 100%; background-image: url('https://i.postimg.cc/jjxCMzWn/Matthew-Silverman.jpg'); background-size: cover; background-position: center top; background-color: #0B2038;"></div>
+            <div style="padding: clamp(22px, 2.4vw, 30px); display: grid; grid-template-rows: 36px 36px 56px auto; align-content: start; flex: 1;">
+              <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(20px, 1.9vw, 25px); line-height: 1.08; white-space: nowrap; color: #0B2038; margin: 0; letter-spacing: -.3px;">Matthew Silverman</h2>
+              <p style="font-size: 12px; line-height: 1.45; letter-spacing: 1.5px; font-weight: 700; color: #B08D38; margin: 0;">PARTNER</p>
+              <div style="display: flex; align-items: center; align-content: flex-start; gap: 6px 10px; margin: 0; padding-bottom: 10px; flex-wrap: wrap;">
+                <a href="https://www.linkedin.com/in/matthewsilv/" target="_blank" rel="noopener" style="font-size: 12.5px; font-weight: 600; color: #0B2038; text-decoration: none; border-bottom: 1px solid #C9A24A; padding-bottom: 2px;">LinkedIn →</a>
+              </div>
+              <p style="font-size: 14.5px; line-height: 1.68; color: #4E5C68; margin: 0;">Matthew Silverman helps scaling international companies establish and expand their commercial footprint in the United States. Combining deep expertise in ABM, paid acquisition, and RevOps, he builds high-converting growth engines that align modern marketing directly with revenue generation. Matthew equips foreign founders and executive teams with the strategy and execution required to navigate US buying behaviors, secure traction, and achieve predictable market penetration.</p>
+            </div>
+          </article>
+
+          <article data-reveal="" data-reveal-delay="300" style="min-width: 0; background: #FCFBF7; border: 1px solid #E0D8C7; border-top: 3px solid #C9A24A; display: flex; flex-direction: column;">
+            <div role="img" aria-label="Russell Krayz" style="aspect-ratio: 4/5; width: 100%; background-image: url('https://i.postimg.cc/vmgXMf3B/Russell-Krayz-Website-Photo-enhanced.jpg'); background-size: cover; background-position: center top; background-color: #0B2038;"></div>
+            <div style="padding: clamp(22px, 2.4vw, 30px); display: grid; grid-template-rows: 36px 36px 56px auto; align-content: start; flex: 1;">
+              <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(20px, 1.9vw, 25px); line-height: 1.08; white-space: nowrap; color: #0B2038; margin: 0; letter-spacing: -.3px;">Russell Krayz</h2>
+              <p style="font-size: 12px; line-height: 1.45; letter-spacing: 1.5px; font-weight: 700; text-transform: uppercase; color: #B08D38; margin: 0;">Business Strategy Partner</p>
+              <div style="display: flex; align-items: center; align-content: flex-start; gap: 6px 10px; margin: 0; padding-bottom: 10px; flex-wrap: wrap;">
+                <a href="https://www.linkedin.com/in/russellkrayz/" target="_blank" rel="noopener" style="font-size: 12.5px; font-weight: 600; color: #0B2038; text-decoration: none; border-bottom: 1px solid #C9A24A; padding-bottom: 2px;">LinkedIn →</a>
+              </div>
+              <p style="font-size: 14.5px; line-height: 1.68; color: #4E5C68; margin: 0;">Russell works at the intersection of innovation and partnership-building, connecting startups, advisors, institutions, non-profits, and government bodies to grow the US-Israel innovation corridor. He specializes in translating relationships across the North American market into practical outcomes, linking the right stakeholders to the right ideas and helping initiatives move from concept to traction.</p>
+            </div>
+          </article>
+        </div>
+
+        <section aria-labelledby="advisory-board-title" style="margin-top: clamp(72px, 9vw, 112px);">
+          <div style="max-width: 640px; margin-bottom: clamp(40px, 5vw, 60px);" data-reveal="">
+            <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 22px;">
+              <span style="width: 32px; height: 1px; background: #C9A24A;"></span>
+              <span style="font-size: 12px; letter-spacing: 3.5px; font-weight: 700; color: #B08D38;">ADVISORY BOARD</span>
+            </div>
+            <h2 id="advisory-board-title" style="font-family: 'Newsreader', serif; font-weight: 500; color: #0B2038; font-size: clamp(32px, 4.6vw, 52px); line-height: 1.08; letter-spacing: -.4px; margin: 0;">Guiding the way</h2>
+          </div>
+
+          <div class="advisory-grid">
+            <article data-reveal="" style="min-width: 0; background: #FCFBF7; border: 1px solid #E0D8C7; border-top: 3px solid #C9A24A; display: flex; flex-direction: column;">
+              <div role="img" aria-label="Tal Malca Salhuv" style="aspect-ratio: 4/5; width: 100%; background-image: url('https://i.postimg.cc/vHs78Fk8/Tal-Malca-Salhuv-cropped-v2.jpg'); background-size: cover; background-position: center top; background-color: #0B2038;"></div>
+              <div style="padding: clamp(22px, 2.4vw, 30px); display: grid; grid-template-rows: 36px 52px 32px; align-content: start; flex: 1;">
+                <h3 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(20px, 1.9vw, 25px); line-height: 1.08; color: #0B2038; margin: 0; letter-spacing: -.3px;">Tal Malca Salhuv</h3>
+                <p style="font-size: 12px; line-height: 1.45; letter-spacing: 1.5px; font-weight: 700; text-transform: uppercase; color: #B08D38; margin: 0;">Strategic Advisor, Ag-Tech &amp; Food-Tech</p>
+                <div style="display: flex; align-items: flex-start; align-content: flex-start; gap: 6px 10px; margin: 0; flex-wrap: wrap;">
+                  <a href="https://www.linkedin.com/in/tal-malca-salhuv/" target="_blank" rel="noopener" style="font-size: 12.5px; font-weight: 600; color: #0B2038; text-decoration: none; border-bottom: 1px solid #C9A24A; padding-bottom: 2px;">LinkedIn →</a>
+                </div>
+              </div>
+            </article>
+
+            <article data-reveal="" data-reveal-delay="100" style="min-width: 0; background: #FCFBF7; border: 1px solid #E0D8C7; border-top: 3px solid #C9A24A; display: flex; flex-direction: column;">
+              <div role="img" aria-label="Sergey Vasilenko" style="aspect-ratio: 4/5; width: 100%; background-image: url('https://i.postimg.cc/FzZYsqkS/Sergey-cropped-v2.jpg'); background-size: cover; background-position: center top; background-color: #0B2038;"></div>
+              <div style="padding: clamp(22px, 2.4vw, 30px); display: grid; grid-template-rows: 36px 52px 32px; align-content: start; flex: 1;">
+                <h3 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(20px, 1.9vw, 25px); line-height: 1.08; color: #0B2038; margin: 0; letter-spacing: -.3px;">Sergey Vasilenko</h3>
+                <p style="font-size: 12px; line-height: 1.45; letter-spacing: 1.5px; font-weight: 700; text-transform: uppercase; color: #B08D38; margin: 0;">Strategic Advisor, Healthtech</p>
+                <div style="display: flex; align-items: flex-start; align-content: flex-start; gap: 6px 10px; margin: 0; flex-wrap: wrap;">
+                  <a href="https://www.linkedin.com/in/sergey-vasilenko/" target="_blank" rel="noopener" style="font-size: 12.5px; font-weight: 600; color: #0B2038; text-decoration: none; border-bottom: 1px solid #C9A24A; padding-bottom: 2px;">LinkedIn →</a>
+                </div>
+              </div>
+            </article>
+
+            <article data-reveal="" data-reveal-delay="200" style="min-width: 0; background: #FCFBF7; border: 1px solid #E0D8C7; border-top: 3px solid #C9A24A; display: flex; flex-direction: column;">
+              <div role="img" aria-label="Niv Amir" style="aspect-ratio: 4/5; width: 100%; background-image: url('https://i.postimg.cc/brjnvkC8/Niv-Amir-cropped.jpg'); background-size: cover; background-position: center top; background-color: #0B2038;"></div>
+              <div style="padding: clamp(22px, 2.4vw, 30px); display: grid; grid-template-rows: 36px 52px 32px; align-content: start; flex: 1;">
+                <h3 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(20px, 1.9vw, 25px); line-height: 1.08; color: #0B2038; margin: 0; letter-spacing: -.3px;">Niv Amir</h3>
+                <p style="font-size: 12px; line-height: 1.45; letter-spacing: 1.5px; font-weight: 700; text-transform: uppercase; color: #B08D38; margin: 0;">Strategic Advisor</p>
+                <div style="display: flex; align-items: flex-start; align-content: flex-start; gap: 6px 10px; margin: 0; flex-wrap: wrap;">
+                  <a href="https://www.linkedin.com/in/niv-amir-together/" target="_blank" rel="noopener" style="font-size: 12.5px; font-weight: 600; color: #0B2038; text-decoration: none; border-bottom: 1px solid #C9A24A; padding-bottom: 2px;">LinkedIn →</a>
+                </div>
+              </div>
+            </article>
+
+            <article data-reveal="" data-reveal-delay="300" style="min-width: 0; background: #FCFBF7; border: 1px solid #E0D8C7; border-top: 3px solid #C9A24A; display: flex; flex-direction: column;">
+              <div role="img" aria-label="Aviran Yaacov" style="aspect-ratio: 4/5; width: 100%; background-image: url('https://i.postimg.cc/Jh5DhsQ0/Aviran-Yaacov.jpg'); background-size: cover; background-position: center top; background-color: #0B2038;"></div>
+              <div style="padding: clamp(22px, 2.4vw, 30px); display: grid; grid-template-rows: 36px 52px 32px; align-content: start; flex: 1;">
+                <h3 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(20px, 1.9vw, 25px); line-height: 1.08; color: #0B2038; margin: 0; letter-spacing: -.3px;">Aviran Yaacov</h3>
+                <p style="font-size: 12px; line-height: 1.45; letter-spacing: 1.5px; font-weight: 700; text-transform: uppercase; color: #B08D38; margin: 0;">Strategic Advisor, Physical AI, <span style="text-transform: none;">IoT</span> and I4.0</p>
+                <div style="display: flex; align-items: flex-start; align-content: flex-start; gap: 6px 10px; margin: 0; flex-wrap: wrap;">
+                  <a href="https://www.linkedin.com/in/aviran-yaacov-2929a297/" target="_blank" rel="noopener" style="font-size: 12.5px; font-weight: 600; color: #0B2038; text-decoration: none; border-bottom: 1px solid #C9A24A; padding-bottom: 2px;">LinkedIn →</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-mark"><img src="../assets/site-logo-final.png" alt="Israel Innovation Springboard"></div>
+          <p>Springboarding the United States and Israeli innovation, and the future of everything.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="/services">Services</a>
+          <a href="/about">About</a>
+          <a href="/team" aria-current="page">Team</a>
+          <a href="/get-started">Contact</a>
+        </nav>
+      </div>
+      <div class="copyright">© <span id="current-year"></span> Israel Innovation Springboard. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileNavigation = document.querySelector('.mobile-nav');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!isOpen));
+      mobileNavigation.classList.toggle('is-open', !isOpen);
+    });
+
+    mobileNavigation.addEventListener('click', (event) => {
+      if (event.target.closest('a')) {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        mobileNavigation.classList.remove('is-open');
+      }
+    });
+
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

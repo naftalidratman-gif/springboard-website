@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png">
+  <link rel="canonical" href="https://israelinnovationspringboard.com/services">
+  <title>Services | Israel Innovation Springboard</title>
+  <meta name="description" content="Explore Israel Innovation Springboard services for connecting U.S. enterprise challenges with proven Israeli technology, pilots, and commercial partnerships.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0B2038;
+      --navy-deep: #07182B;
+      --navy-dark: #081628;
+      --gold: #C9A24A;
+      --gold-dark: #B08D38;
+      --gold-light: #E5CB89;
+      --cream: #FCFBF7;
+      --cream-deep: #F6F2EA;
+      --ink-muted: #4E5C68;
+      --white: #FFFFFF;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { min-width: 320px; background: var(--cream-deep); scroll-behavior: smooth; scroll-padding-top: 96px; }
+
+    [id] { scroll-margin-top: 96px; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--navy);
+      background: var(--cream-deep);
+      font-family: "Manrope", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 20;
+      background: rgba(7, 24, 43, 0.94);
+      border-bottom: 1px solid rgba(201, 162, 74, 0.16);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      width: min(100%, 1240px);
+      height: 76px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 4vw, 48px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .logo-link { display: flex; align-items: center; flex: none; text-decoration: none; }
+
+    .logo-link img {
+      display: block;
+      width: auto;
+      height: 52px;
+      max-width: min(42vw, 154px);
+      object-fit: contain;
+    }
+
+    .desktop-nav { display: flex; align-items: center; gap: clamp(18px, 2.1vw, 32px); }
+
+    .nav-link {
+      position: relative;
+      color: #DCE3EA;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color 180ms ease;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible { color: var(--white); }
+
+    .nav-link[aria-current="page"]::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -10px;
+      left: 0;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 11px 22px;
+      border-radius: 2px;
+      color: var(--navy);
+      background: var(--gold);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      text-decoration: none;
+      transition: background 180ms ease, transform 180ms ease;
+    }
+
+    .nav-cta:hover,
+    .nav-cta:focus-visible { background: #D9B45E; transform: translateY(-2px); }
+
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      padding: 8px;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      margin: 5px 0;
+      background: var(--white);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-nav {
+      display: none;
+      padding: 14px clamp(20px, 4vw, 48px) 26px;
+      background: var(--navy-dark);
+      border-top: 1px solid rgba(201, 162, 74, 0.25);
+    }
+
+    .mobile-nav.is-open { display: flex; flex-direction: column; }
+    .mobile-nav .nav-link { padding: 14px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.07); font-size: 16px; }
+    .mobile-nav .nav-link[aria-current="page"] { color: var(--gold-light); }
+    .mobile-nav .nav-link[aria-current="page"]::after { display: none; }
+    .mobile-nav .nav-cta { justify-content: center; margin-top: 14px; padding: 14px; }
+
+    main { padding-top: 76px; }
+
+    .services-section {
+      position: relative;
+      min-height: calc(100vh - 76px);
+      padding: clamp(72px, 9vw, 124px) clamp(20px, 4vw, 48px) clamp(88px, 11vw, 148px);
+      overflow: hidden;
+      background: var(--cream-deep);
+    }
+
+    .services-section::before {
+      content: "";
+      position: absolute;
+      top: -270px;
+      right: -180px;
+      width: 560px;
+      height: 560px;
+      border: 1px solid rgba(201, 162, 74, 0.15);
+      transform: rotate(45deg);
+      box-shadow: 0 0 0 88px rgba(201, 162, 74, 0.025), 0 0 0 176px rgba(201, 162, 74, 0.018);
+      pointer-events: none;
+    }
+
+    .services-inner { position: relative; z-index: 1; width: min(100%, 1240px); margin: 0 auto; }
+
+    .services-intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.65fr);
+      gap: clamp(34px, 7vw, 110px);
+      align-items: end;
+      margin-bottom: clamp(48px, 6vw, 76px);
+    }
+
+    .eyebrow { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+    .eyebrow::before { content: ""; width: 32px; height: 1px; background: var(--gold); }
+    .eyebrow span { color: var(--gold-dark); font-size: 12px; font-weight: 700; letter-spacing: 3.5px; }
+
+    h1 {
+      max-width: 760px;
+      margin: 0;
+      color: var(--navy);
+      font-family: "Newsreader", serif;
+      font-size: clamp(42px, 6vw, 72px);
+      font-weight: 500;
+      line-height: 0.98;
+      letter-spacing: -1px;
+      text-wrap: balance;
+    }
+
+    .intro-copy {
+      margin: 0 0 4px;
+      color: var(--ink-muted);
+      font-size: clamp(16px, 1.6vw, 19px);
+      line-height: 1.7;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(18px, 2.2vw, 30px);
+      counter-reset: service;
+    }
+
+    .service-card {
+      position: relative;
+      min-height: 286px;
+      padding: clamp(30px, 3.5vw, 44px);
+      overflow: hidden;
+      background: var(--cream);
+      border: 1px solid #E0D8C7;
+      border-top: 3px solid var(--gold);
+      transition: transform 280ms ease, box-shadow 280ms ease, border-color 280ms ease;
+    }
+
+    .service-card::after {
+      content: "";
+      position: absolute;
+      right: -78px;
+      bottom: -92px;
+      width: 180px;
+      height: 180px;
+      border: 1px solid rgba(201, 162, 74, 0.13);
+      transform: rotate(45deg);
+      transition: transform 400ms cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .service-card:hover { transform: translateY(-6px); border-color: #D4C7AC; box-shadow: 0 22px 48px rgba(11, 32, 56, 0.12); }
+    .service-card:hover::after { transform: rotate(45deg) scale(1.12); }
+
+    .service-number {
+      display: block;
+      margin-bottom: 24px;
+      color: var(--gold);
+      font-family: "Newsreader", serif;
+      font-size: 46px;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .service-card h2 {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 14px;
+      color: var(--navy);
+      font-family: "Newsreader", serif;
+      font-size: clamp(24px, 2.4vw, 30px);
+      font-weight: 600;
+      line-height: 1.12;
+      letter-spacing: -0.3px;
+    }
+
+    .service-card p {
+      position: relative;
+      z-index: 1;
+      max-width: 500px;
+      margin: 0;
+      color: #54616D;
+      font-size: 16px;
+      line-height: 1.68;
+    }
+
+    .site-footer { padding: 56px clamp(20px, 4vw, 48px) 30px; color: #C4CEDA; background: var(--navy-deep); }
+    .footer-inner { width: min(100%, 1240px); margin: 0 auto; }
+    .footer-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 32px; padding-bottom: 40px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+    .footer-brand { max-width: 380px; }
+    .footer-mark { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .footer-mark img { display: block; width: auto; height: 40px; max-width: 118px; object-fit: contain; flex: none; }
+    .footer-brand p { margin: 0; color: #8A97A5; font-size: 15px; line-height: 1.6; }
+    .footer-nav { display: flex; flex-wrap: wrap; gap: 14px 40px; }
+    .footer-nav a { color: #C4CEDA; font-size: 14px; font-weight: 600; text-decoration: none; transition: color 180ms ease; }
+    .footer-nav a:hover, .footer-nav a:focus-visible, .footer-nav a[aria-current="page"] { color: var(--white); }
+    .copyright { padding-top: 28px; color: #6A7785; font-size: 13px; }
+
+    @media (max-width: 880px) {
+      .desktop-nav { display: none; }
+      .menu-toggle { display: block; }
+      .services-intro { grid-template-columns: 1fr; gap: 26px; }
+      .intro-copy { max-width: 680px; }
+    }
+
+    @media (max-width: 680px) {
+      .services-section { padding-top: 62px; }
+      .services-section::before { right: -320px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card { min-height: 0; }
+      .footer-top { flex-direction: column; }
+      .footer-nav { width: 100%; gap: 14px 28px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo-link" href="/" aria-label="Return to Israel Innovation Springboard home">
+        <img src="../assets/site-logo-final.png" alt="Israel Innovation Springboard">
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a class="nav-link" href="/about">About</a>
+        <a class="nav-link" href="/why-were-different">Why We're Different</a>
+        <a class="nav-link" href="/services" aria-current="page">Services</a>
+        <a class="nav-link" href="/case-study">Case Study</a>
+        <a class="nav-link" href="/for-israeli-startups">For Israeli Startups</a>
+        <a class="nav-link" href="/team">Team</a>
+        <a class="nav-cta" href="/get-started">Get Started</a>
+      </nav>
+
+      <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <nav class="mobile-nav" id="mobile-navigation" aria-label="Mobile navigation">
+      <a class="nav-link" href="/about">About</a>
+      <a class="nav-link" href="/why-were-different">Why We're Different</a>
+      <a class="nav-link" href="/services" aria-current="page">Services</a>
+      <a class="nav-link" href="/case-study">Case Study</a>
+      <a class="nav-link" href="/for-israeli-startups">For Israeli Startups</a>
+      <a class="nav-link" href="/team">Team</a>
+      <a class="nav-cta" href="/get-started">Get Started</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="services-section" aria-labelledby="services-title">
+      <div class="services-inner">
+        <div class="services-intro">
+          <div>
+            <div class="eyebrow"><span>WHAT WE DO</span></div>
+            <h1 id="services-title">A bridge built for two-way innovation</h1>
+          </div>
+          <p class="intro-copy">We focus on bringing Israeli technology to market to solve U.S. enterprise challenges.</p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <span class="service-number">01</span>
+            <h2>Connection Point</h2>
+            <p>Connecting large enterprise companies in the US Midwest and South with Israel's startup ecosystem.</p>
+          </article>
+          <article class="service-card">
+            <span class="service-number">02</span>
+            <h2>Market Access</h2>
+            <p>Opening doors for Israeli companies in underserved US markets.</p>
+          </article>
+          <article class="service-card">
+            <span class="service-number">03</span>
+            <h2>Pilot to Scale</h2>
+            <p>Running structured pilots that let U.S. enterprises validate Israeli technology quickly, with a clear path to full-scale deployment.</p>
+          </article>
+          <article class="service-card">
+            <span class="service-number">04</span>
+            <h2>USA–Israel Partnership</h2>
+            <p>Facilitating the commercial agreements that make partnerships real, not just introductions.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-mark"><img src="../assets/site-logo-final.png" alt="Israel Innovation Springboard"></div>
+          <p>Springboarding the United States and Israeli innovation, and the future of everything.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="/services" aria-current="page">Services</a>
+          <a href="/about">About</a>
+          <a href="/team">Team</a>
+          <a href="/get-started">Contact</a>
+        </nav>
+      </div>
+      <div class="copyright">© <span id="current-year"></span> Israel Innovation Springboard. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileNavigation = document.querySelector('.mobile-nav');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!isOpen));
+      mobileNavigation.classList.toggle('is-open', !isOpen);
+    });
+
+    mobileNavigation.addEventListener('click', (event) => {
+      if (event.target.closest('a')) {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        mobileNavigation.classList.remove('is-open');
+      }
+    });
+
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png">
+  <link rel="canonical" href="https://israelinnovationspringboard.com/about">
+  <title>About | Israel Innovation Springboard</title>
+  <meta name="description" content="Learn how Israel Innovation Springboard connects U.S. enterprises in the Midwest and South with proven Israeli technology ready to deploy.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0B2038;
+      --navy-deep: #07182B;
+      --navy-dark: #081628;
+      --gold: #C9A24A;
+      --gold-dark: #B08D38;
+      --gold-light: #E5CB89;
+      --cream: #FCFBF7;
+      --cream-deep: #F6F2EA;
+      --ink-muted: #4E5C68;
+      --white: #FFFFFF;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { min-width: 320px; background: var(--cream); scroll-behavior: smooth; scroll-padding-top: 96px; }
+
+    [id] { scroll-margin-top: 96px; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--navy);
+      background: var(--cream);
+      font-family: "Manrope", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 20;
+      background: rgba(7, 24, 43, 0.94);
+      border-bottom: 1px solid rgba(201, 162, 74, 0.16);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      width: min(100%, 1240px);
+      height: 76px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 4vw, 48px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .logo-link { display: flex; align-items: center; flex: none; text-decoration: none; }
+
+    .logo-link img {
+      display: block;
+      width: auto;
+      height: 52px;
+      max-width: min(42vw, 154px);
+      object-fit: contain;
+    }
+
+    .desktop-nav { display: flex; align-items: center; gap: clamp(18px, 2.1vw, 32px); }
+
+    .nav-link {
+      position: relative;
+      color: #DCE3EA;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color 180ms ease;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible { color: var(--white); }
+
+    .nav-link[aria-current="page"]::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -10px;
+      left: 0;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 11px 22px;
+      border-radius: 2px;
+      color: var(--navy);
+      background: var(--gold);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      text-decoration: none;
+      transition: background 180ms ease, transform 180ms ease;
+    }
+
+    .nav-cta:hover,
+    .nav-cta:focus-visible { background: #D9B45E; transform: translateY(-2px); }
+
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      padding: 8px;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      margin: 5px 0;
+      background: var(--white);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-nav {
+      display: none;
+      padding: 14px clamp(20px, 4vw, 48px) 26px;
+      background: var(--navy-dark);
+      border-top: 1px solid rgba(201, 162, 74, 0.25);
+    }
+
+    .mobile-nav.is-open { display: flex; flex-direction: column; }
+    .mobile-nav .nav-link { padding: 14px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.07); font-size: 16px; }
+    .mobile-nav .nav-link[aria-current="page"] { color: var(--gold-light); }
+    .mobile-nav .nav-link[aria-current="page"]::after { display: none; }
+    .mobile-nav .nav-cta { justify-content: center; margin-top: 14px; padding: 14px; }
+
+    main { padding-top: 76px; }
+
+    .about-section {
+      position: relative;
+      min-height: calc(100vh - 76px);
+      padding: clamp(76px, 10vw, 132px) clamp(20px, 4vw, 48px);
+      overflow: hidden;
+      background: var(--cream);
+    }
+
+    .about-section::before {
+      content: "";
+      position: absolute;
+      top: -220px;
+      right: -180px;
+      width: 520px;
+      height: 520px;
+      border: 1px solid rgba(201, 162, 74, 0.16);
+      transform: rotate(45deg);
+      box-shadow: 0 0 0 80px rgba(201, 162, 74, 0.025), 0 0 0 160px rgba(201, 162, 74, 0.018);
+      pointer-events: none;
+    }
+
+    .about-inner {
+      position: relative;
+      width: min(100%, 1240px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
+      gap: clamp(48px, 7vw, 96px);
+      align-items: center;
+    }
+
+    .eyebrow { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+    .eyebrow::before { content: ""; width: 32px; height: 1px; background: var(--gold); }
+    .eyebrow span { color: var(--gold-dark); font-size: 12px; font-weight: 700; letter-spacing: 3.5px; }
+
+    h1 {
+      max-width: 710px;
+      margin: 0 0 24px;
+      color: var(--navy);
+      font-family: "Newsreader", serif;
+      font-size: clamp(38px, 5.2vw, 64px);
+      font-weight: 500;
+      line-height: 1.06;
+      letter-spacing: -0.5px;
+      text-wrap: balance;
+    }
+
+    .about-copy p {
+      max-width: 720px;
+      margin: 0 0 20px;
+      color: var(--ink-muted);
+      font-size: clamp(16px, 1.8vw, 19px);
+      line-height: 1.68;
+    }
+
+    .about-copy p:last-child { margin-bottom: 0; }
+
+    .stats-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+
+    .stat-card {
+      min-height: 180px;
+      padding: 32px 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid #E6DFD0;
+      border-radius: 2px;
+      background: var(--cream-deep);
+      transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+
+    .stat-card:nth-child(1),
+    .stat-card:nth-child(4) { color: var(--white); background: var(--navy); border-color: var(--navy); }
+
+    .stat-card:hover { transform: translateY(-5px); box-shadow: 0 18px 42px rgba(11, 32, 56, 0.12); }
+    .stat-value { color: var(--gold-dark); font-family: "Newsreader", serif; font-size: clamp(40px, 5vw, 54px); line-height: 1; }
+    .stat-card:nth-child(1) .stat-value,
+    .stat-card:nth-child(4) .stat-value { color: var(--gold-light); }
+    .stat-label { margin-top: 18px; color: #54616D; font-size: 14px; line-height: 1.4; }
+    .stat-card:nth-child(1) .stat-label,
+    .stat-card:nth-child(4) .stat-label { color: #B7C2CE; }
+
+    .site-footer { padding: clamp(48px, 6vw, 72px) clamp(20px, 4vw, 48px) 40px; background: #050F1C; }
+    .footer-inner { width: min(100%, 1240px); margin: 0 auto; }
+    .footer-top { display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between; align-items: flex-start; padding-bottom: 40px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+    .footer-brand { max-width: 380px; }
+    .footer-mark { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .footer-mark img { display: block; width: auto; height: 40px; max-width: 118px; object-fit: contain; flex: none; }
+    .footer-brand p { margin: 0; color: #8A97A5; font-size: 15px; line-height: 1.6; }
+    .footer-nav { display: flex; flex-wrap: wrap; gap: 14px 40px; }
+    .footer-nav a { color: #C4CEDA; font-size: 14px; font-weight: 600; text-decoration: none; transition: color 180ms ease; }
+    .footer-nav a:hover,
+    .footer-nav a:focus-visible { color: var(--white); }
+    .copyright { padding-top: 28px; color: #6A7785; font-size: 13px; }
+
+    :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 4px; }
+
+    @media (max-width: 1060px) {
+      .desktop-nav { gap: 16px; }
+      .nav-link { font-size: 13px; }
+      .nav-cta { padding-inline: 16px; }
+      .about-inner { grid-template-columns: 1fr 1fr; gap: 42px; }
+    }
+
+    @media (max-width: 880px) {
+      .desktop-nav { display: none; }
+      .menu-toggle { display: block; }
+      .about-inner { grid-template-columns: 1fr; }
+      .about-copy { max-width: 720px; }
+      .stats-grid { width: min(100%, 680px); }
+    }
+
+    @media (max-width: 560px) {
+      .about-section { padding-top: 64px; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .stat-card { min-height: 150px; }
+      .footer-nav { width: 100%; gap: 14px 28px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo-link" href="/" aria-label="Return to Israel Innovation Springboard home">
+        <img src="../assets/site-logo-final.png" alt="Israel Innovation Springboard">
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a class="nav-link" href="/about" aria-current="page">About</a>
+        <a class="nav-link" href="/why-were-different">Why We're Different</a>
+        <a class="nav-link" href="/services">Services</a>
+        <a class="nav-link" href="/case-study">Case Study</a>
+        <a class="nav-link" href="/for-israeli-startups">For Israeli Startups</a>
+        <a class="nav-link" href="/team">Team</a>
+        <a class="nav-cta" href="/get-started">Get Started</a>
+      </nav>
+
+      <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <nav class="mobile-nav" id="mobile-navigation" aria-label="Mobile navigation">
+      <a class="nav-link" href="/about" aria-current="page">About</a>
+      <a class="nav-link" href="/why-were-different">Why We're Different</a>
+      <a class="nav-link" href="/services">Services</a>
+      <a class="nav-link" href="/case-study">Case Study</a>
+      <a class="nav-link" href="/for-israeli-startups">For Israeli Startups</a>
+      <a class="nav-link" href="/team">Team</a>
+      <a class="nav-cta" href="/get-started">Get Started</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="about-section" aria-labelledby="about-title">
+      <div class="about-inner">
+        <div class="about-copy">
+          <div class="eyebrow"><span>ABOUT US</span></div>
+          <h1 id="about-title">Connecting two of the world's most active innovation ecosystems</h1>
+          <p>Led by a team of innovation and market-access experts, Israel Innovation Springboard bridges U.S. enterprises in the Midwest and South with Israel's innovation ecosystem.</p>
+          <p>We start with the problems U.S. enterprises are already trying to solve, then bring in Israeli technology that's already proven and ready to deploy.</p>
+        </div>
+
+        <div class="stats-grid" aria-label="About Israel Innovation Springboard statistics">
+          <article class="stat-card">
+            <div class="stat-value">2</div>
+            <div class="stat-label">nations, one innovation corridor</div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-value">20+</div>
+            <div class="stat-label">years of corporate innovation leadership</div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-value">GTM</div>
+            <div class="stat-label">go-to-market deployment focus</div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-value">US</div>
+            <div class="stat-label">Midwest &amp; South focus markets</div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-mark"><img src="../assets/site-logo-final.png" alt="Israel Innovation Springboard"></div>
+          <p>Springboarding the United States and Israeli innovation, and the future of everything.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="/services">Services</a>
+          <a href="/about" aria-current="page">About</a>
+          <a href="/team">Team</a>
+          <a href="/get-started">Contact</a>
+        </nav>
+      </div>
+      <div class="copyright">© <span id="current-year"></span> Israel Innovation Springboard. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileNavigation = document.querySelector('.mobile-nav');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!isOpen));
+      mobileNavigation.classList.toggle('is-open', !isOpen);
+    });
+
+    mobileNavigation.addEventListener('click', (event) => {
+      if (event.target.closest('a')) {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        mobileNavigation.classList.remove('is-open');
+      }
+    });
+
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
