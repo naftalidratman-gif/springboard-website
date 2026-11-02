@@ -289,15 +289,22 @@
     .footer-nav a:hover, .footer-nav a:focus-visible, .footer-nav a[aria-current="page"] { color: var(--white); }
     .copyright { padding-top: 28px; color: #6A7785; font-size: 13px; }
 
+    .leadership-grid {
+      display: grid;
+      /* 6 tracks, each card spans 2: rows of 3, with a 2-card last row centered */
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: clamp(20px, 2.4vw, 30px);
+      align-items: stretch;
+    }
+    .leadership-grid > article { grid-column: span 2; }
+    .leadership-grid > article:nth-child(3n+1):nth-last-child(2) { grid-column: 2 / span 2; }
+
     .advisory-grid {
       --advisory-gap: clamp(20px, 2.4vw, 30px);
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: var(--advisory-gap);
       align-items: stretch;
-      /* 3 cards at the same width as the 4-across leadership cards, centered */
-      max-width: calc(75% - var(--advisory-gap) / 4);
-      margin: 0 auto;
     }
 
     @media (max-width: 880px) {
@@ -305,7 +312,11 @@
       .menu-toggle { display: block; }
       .services-intro { grid-template-columns: 1fr; gap: 26px; }
       .intro-copy { max-width: 680px; }
-      .advisory-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: none; }
+      .advisory-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .leadership-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .leadership-grid > article, .leadership-grid > article:nth-child(3n+1):nth-last-child(2) { grid-column: auto; }
+      /* center a leftover card when the leader count is odd */
+      .leadership-grid > article:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - clamp(20px, 2.4vw, 30px) / 2); }
       /* center a leftover card when the advisor count is odd */
       .advisory-grid > article:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - var(--advisory-gap) / 2); }
     }
@@ -316,6 +327,8 @@
       .services-grid { grid-template-columns: 1fr; }
       .service-card { min-height: 0; }
       .advisory-grid { grid-template-columns: 1fr; }
+      .leadership-grid { grid-template-columns: 1fr; }
+      .leadership-grid > article:last-child:nth-child(odd) { width: 100%; }
       .advisory-grid > article:last-child:nth-child(odd) { width: 100%; }
       .footer-top { flex-direction: column; }
       .footer-nav { width: 100%; gap: 14px 28px; }
@@ -372,10 +385,10 @@
           <h1 id="team-title" style="font-family: 'Newsreader', serif; font-weight: 500; color: #0B2038; font-size: clamp(32px, 4.6vw, 52px); line-height: 1.08; letter-spacing: -.4px; margin: 0;">The people behind the bridge</h1>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: clamp(20px, 2.4vw, 30px); align-items: stretch;">
+        <div class="leadership-grid">
           <article data-reveal="" style="min-width: 0; background: #FCFBF7; border: 1px solid #E0D8C7; border-top: 3px solid #C9A24A; display: flex; flex-direction: column;">
             <div role="img" aria-label="Naftali Dratman" style="aspect-ratio: 4/5; width: 100%; background-image: url('/assets/team/naftali-dratman.jpg'); background-size: cover; background-position: center top; background-color: #0B2038;"></div>
-            <div style="padding: clamp(22px, 2.4vw, 30px); display: grid; grid-template-rows: 36px 36px 56px auto; align-content: start; flex: 1;">
+            <div style="padding: clamp(22px, 2.4vw, 30px); display: grid; grid-template-rows: 36px 56px 56px auto; align-content: start; flex: 1;">
               <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(20px, 1.9vw, 25px); line-height: 1.08; white-space: nowrap; color: #0B2038; margin: 0; letter-spacing: -.3px;">Naftali Dratman</h2>
               <p style="font-size: 12px; line-height: 1.45; letter-spacing: 1.5px; font-weight: 700; color: #B08D38; margin: 0;">CEO</p>
               <div style="display: flex; align-items: center; align-content: flex-start; gap: 6px 10px; margin: 0; padding-bottom: 10px; flex-wrap: wrap;">
@@ -394,7 +407,7 @@
 
           <article data-reveal="" data-reveal-delay="100" style="min-width: 0; background: #FCFBF7; border: 1px solid #E0D8C7; border-top: 3px solid #C9A24A; display: flex; flex-direction: column;">
             <div role="img" aria-label="Brian Wallace" style="aspect-ratio: 4/5; width: 100%; background-image: url('/assets/team/brian-wallace.jpg'); background-size: cover; background-position: center top; background-color: #0B2038;"></div>
-            <div style="padding: clamp(22px, 2.4vw, 30px); display: grid; grid-template-rows: 36px 36px 56px auto; align-content: start; flex: 1;">
+            <div style="padding: clamp(22px, 2.4vw, 30px); display: grid; grid-template-rows: 36px 56px 56px auto; align-content: start; flex: 1;">
               <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(20px, 1.9vw, 25px); line-height: 1.08; white-space: nowrap; color: #0B2038; margin: 0; letter-spacing: -.3px;">Brian Wallace</h2>
               <p style="font-size: 12px; line-height: 1.45; letter-spacing: 1.5px; font-weight: 700; color: #B08D38; margin: 0;">CMO &amp; INNOVATION ARCHITECT</p>
               <div style="display: flex; align-items: center; align-content: flex-start; gap: 6px 10px; margin: 0; padding-bottom: 10px; flex-wrap: wrap;">
@@ -408,22 +421,34 @@
           </article>
 
           <article data-reveal="" data-reveal-delay="200" style="min-width: 0; background: #FCFBF7; border: 1px solid #E0D8C7; border-top: 3px solid #C9A24A; display: flex; flex-direction: column;">
-            <div role="img" aria-label="Matthew Silverman" style="aspect-ratio: 4/5; width: 100%; background-image: url('/assets/team/matthew-silverman.jpg'); background-size: cover; background-position: center top; background-color: #0B2038;"></div>
-            <div style="padding: clamp(22px, 2.4vw, 30px); display: grid; grid-template-rows: 36px 36px 56px auto; align-content: start; flex: 1;">
-              <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(20px, 1.9vw, 25px); line-height: 1.08; white-space: nowrap; color: #0B2038; margin: 0; letter-spacing: -.3px;">Matthew Silverman</h2>
-              <p style="font-size: 12px; line-height: 1.45; letter-spacing: 1.5px; font-weight: 700; color: #B08D38; margin: 0;">PARTNER</p>
+            <div role="img" aria-label="Heidi Zedlar" style="aspect-ratio: 4/5; width: 100%; background-image: url('/assets/team/heidi-zedlar.jpg'); background-size: cover; background-position: center top; background-color: #0B2038;"></div>
+            <div style="padding: clamp(22px, 2.4vw, 30px); display: grid; grid-template-rows: 36px 56px 56px auto; align-content: start; flex: 1;">
+              <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(20px, 1.9vw, 25px); line-height: 1.08; white-space: nowrap; color: #0B2038; margin: 0; letter-spacing: -.3px;">Heidi Zedlar</h2>
+              <p style="font-size: 12px; line-height: 1.45; letter-spacing: 1.5px; font-weight: 700; color: #B08D38; margin: 0;">SENIOR BUSINESS DEVELOPMENT EXPERT, HEALTHTECH</p>
               <div style="display: flex; align-items: center; align-content: flex-start; gap: 6px 10px; margin: 0; padding-bottom: 10px; flex-wrap: wrap;">
-                <a href="https://www.linkedin.com/in/matthewsilv/" target="_blank" rel="noopener" style="font-size: 12.5px; font-weight: 600; color: #0B2038; text-decoration: none; border-bottom: 1px solid #C9A24A; padding-bottom: 2px;">LinkedIn →</a>
+                <a href="https://www.linkedin.com/in/heidi-zedlar-dnp-mba-rn-ne-bc-2200a949/" target="_blank" rel="noopener" style="font-size: 12.5px; font-weight: 600; color: #0B2038; text-decoration: none; border-bottom: 1px solid #C9A24A; padding-bottom: 2px;">LinkedIn →</a>
               </div>
-              <p style="font-size: 14.5px; line-height: 1.68; color: #4E5C68; margin: 0;">Matthew Silverman helps scaling international companies establish and expand their commercial footprint in the United States. Combining deep expertise in ABM, paid acquisition, and RevOps, he builds high-converting growth engines that align modern marketing directly with revenue generation. Matthew equips foreign founders and executive teams with the strategy and execution required to navigate US buying behaviors, secure traction, and achieve predictable market penetration.</p>
+              <p style="font-size: 14.5px; line-height: 1.68; color: #4E5C68; margin: 0;">Heidi Zedlar, DNP, MBA, RN, NE-BC, is a healthcare executive and strategist with deep experience in healthcare operations, workforce strategy, business development, and regulatory compliance. She has led complex healthcare initiatives, built compliance and education programs across all 50 states, and advanced technology integration. Heidi focuses on bridging healthcare needs and emerging technologies, including AI, to improve operational performance and create measurable value for healthcare organizations.</p>
             </div>
           </article>
 
           <article data-reveal="" data-reveal-delay="300" style="min-width: 0; background: #FCFBF7; border: 1px solid #E0D8C7; border-top: 3px solid #C9A24A; display: flex; flex-direction: column;">
+            <div role="img" aria-label="Matthew Silverman" style="aspect-ratio: 4/5; width: 100%; background-image: url('/assets/team/matthew-silverman.jpg'); background-size: cover; background-position: center top; background-color: #0B2038;"></div>
+            <div style="padding: clamp(22px, 2.4vw, 30px); display: grid; grid-template-rows: 36px 56px 56px auto; align-content: start; flex: 1;">
+              <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(20px, 1.9vw, 25px); line-height: 1.08; white-space: nowrap; color: #0B2038; margin: 0; letter-spacing: -.3px;">Matthew Silverman</h2>
+              <p style="font-size: 12px; line-height: 1.45; letter-spacing: 1.5px; font-weight: 700; color: #B08D38; margin: 0;">SENIOR BUSINESS DEVELOPMENT EXPERT</p>
+              <div style="display: flex; align-items: center; align-content: flex-start; gap: 6px 10px; margin: 0; padding-bottom: 10px; flex-wrap: wrap;">
+                <a href="https://www.linkedin.com/in/matthewsilv/" target="_blank" rel="noopener" style="font-size: 12.5px; font-weight: 600; color: #0B2038; text-decoration: none; border-bottom: 1px solid #C9A24A; padding-bottom: 2px;">LinkedIn →</a>
+              </div>
+              <p style="font-size: 14.5px; line-height: 1.68; color: #4E5C68; margin: 0;">Matthew helps scaling international companies establish and expand their commercial footprint in the United States. Combining deep expertise in ABM, paid acquisition, and RevOps, he builds high-converting growth engines that align modern marketing directly with revenue generation. Matthew equips foreign founders and executive teams with the strategy and execution required to navigate US buying behaviors, secure traction, and achieve predictable market penetration.</p>
+            </div>
+          </article>
+
+          <article data-reveal="" data-reveal-delay="400" style="min-width: 0; background: #FCFBF7; border: 1px solid #E0D8C7; border-top: 3px solid #C9A24A; display: flex; flex-direction: column;">
             <div role="img" aria-label="Russell Krayz" style="aspect-ratio: 4/5; width: 100%; background-image: url('/assets/team/russell-krayz.jpg'); background-size: cover; background-position: center top; background-color: #0B2038;"></div>
-            <div style="padding: clamp(22px, 2.4vw, 30px); display: grid; grid-template-rows: 36px 36px 56px auto; align-content: start; flex: 1;">
+            <div style="padding: clamp(22px, 2.4vw, 30px); display: grid; grid-template-rows: 36px 56px 56px auto; align-content: start; flex: 1;">
               <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(20px, 1.9vw, 25px); line-height: 1.08; white-space: nowrap; color: #0B2038; margin: 0; letter-spacing: -.3px;">Russell Krayz</h2>
-              <p style="font-size: 12px; line-height: 1.45; letter-spacing: 1.5px; font-weight: 700; text-transform: uppercase; color: #B08D38; margin: 0;">Business Strategy Partner</p>
+              <p style="font-size: 12px; line-height: 1.45; letter-spacing: 1.5px; font-weight: 700; text-transform: uppercase; color: #B08D38; margin: 0;">Senior Business Development Expert</p>
               <div style="display: flex; align-items: center; align-content: flex-start; gap: 6px 10px; margin: 0; padding-bottom: 10px; flex-wrap: wrap;">
                 <a href="https://www.linkedin.com/in/russellkrayz/" target="_blank" rel="noopener" style="font-size: 12.5px; font-weight: 600; color: #0B2038; text-decoration: none; border-bottom: 1px solid #C9A24A; padding-bottom: 2px;">LinkedIn →</a>
               </div>
